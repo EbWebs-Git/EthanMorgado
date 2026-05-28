@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethan Morgado — Créateur Audiovisuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F9F6F0;
+    --ink: #1A1814;
+    --ink-soft: #4A4640;
+    --ink-muted: #8A8580;
+    --gold: #C9A84C;
+    --gold-light: #F2E8CC;
+    --gold-pale: #FBF5E6;
+    --light-warm: #EFEBE2;
+    --white: #FFFFFF;
+    --accent: #D4691E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(249,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 6rem;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-light);
+    border: 1px solid var(--gold);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .hero-name .line2 {
+    color: var(--gold);
+  }
+  .hero-subtitle {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    margin-bottom: 2.5rem;
+    margin-top: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin-bottom: 3rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    border: 1.5px solid var(--ink);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-warm);
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-photo-wrap {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-photo-wrap img {
+    width: 340px;
+    height: 420px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 200px 200px 20px 20px;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 20px;
+    right: -30px;
+    background: var(--white);
+    border: 1px solid var(--gold-light);
+    border-radius: 16px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 8px 32px rgba(26,24,20,0.12);
+    text-align: center;
+  }
+  .hero-badge .big { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); display: block; line-height: 1; }
+  .hero-badge .small { font-size: 0.72rem; color: var(--ink-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hero-badge2 {
+    position: absolute;
+    top: 30px;
+    left: -40px;
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    color: var(--cream);
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .hero-badge2 span { color: var(--gold); }
+
+  /* SECTION COMMON */
+  section { padding: 7rem 6rem; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .stat-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
+  .about-text p { color: var(--ink-soft); line-height: 1.8; margin-bottom: 1.2rem; font-size: 0.98rem; }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+
+  /* SKILLS */
+  #skills { background: var(--cream); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .skill-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: border-color 0.3s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .skill-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon {
+    width: 44px; height: 44px;
+    background: var(--gold-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .skill-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    background: var(--cream);
+    color: var(--ink-soft);
+    font-size: 0.74rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid var(--light-warm);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--ink); color: var(--cream); }
+  #projects .section-title { color: var(--cream); }
+  #projects .section-label { color: var(--gold); }
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .projects-intro { color: rgba(249,246,240,0.6); font-size: 0.95rem; line-height: 1.7; max-width: 400px; }
+  .project-main {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .project-card {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(249,246,240,0.04);
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  .project-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .project-visual {
+    height: 280px;
+    background: linear-gradient(135deg, #2A2620 0%, #1A1814 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-visual.mapping {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  .project-visual.theatre {
+    background: linear-gradient(135deg, #2d1b0e 0%, #4a2c1a 50%, #6b3a1f 100%);
+  }
+  .project-visual.medals {
+    background: linear-gradient(135deg, #1a2a1a 0%, #1e3a1e 50%, #2a4a2a 100%);
+  }
+  .mapping-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+  .mapping-animation svg { width: 100%; height: 100%; }
+  .project-body { padding: 1.8rem; }
+  .project-year {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .project-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+  }
+  .project-card p {
+    font-size: 0.88rem;
+    color: rgba(249,246,240,0.6);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .project-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .projects-small {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .project-small-card .project-visual { height: 180px; }
+  .project-small-card h3 { font-size: 1.1rem; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+  .timeline {
+    margin-top: 4rem;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px; bottom: 0;
+    width: 1.5px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 5px;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.25);
+    transform: translateX(50%) translateX(-0.75px);
+  }
+  .timeline-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .timeline-sub {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--white);
+    text-align: center;
+    padding: 7rem 6rem;
+  }
+  #contact .section-label { justify-content: center; }
+  #contact .section-label::after { display: none; }
+  #contact .section-title { max-width: 600px; margin: 0 auto 1.5rem; }
+  .contact-sub {
+    color: var(--ink-muted);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1.5px solid var(--light-warm);
+    color: var(--ink);
+    background: var(--cream);
+  }
+  .contact-link:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,24,20,0.1); border-color: var(--gold); }
+  .contact-link.main {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .contact-link.main:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(249,246,240,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+  }
+  footer span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.25s; opacity: 0; }
+  .delay-3 { animation-delay: 0.4s; opacity: 0; }
+  .delay-4 { animation-delay: 0.55s; opacity: 0; }
+
+  /* PULSE light orbs */
+  .light-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { min-height: 350px; }
+    section { padding: 4rem 2rem; }
+    #about { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-main, .projects-small, .exp-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Ethan <span>Morgado</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#experience">Parcours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-tag fade-up delay-1">Disponible pour collaborer</div>
+    <h1 class="hero-name fade-up delay-2">
+      Ethan<br><span class="line2">Morgado</span>
+    </h1>
+    <p class="hero-subtitle fade-up delay-3">Créateur audiovisuel &amp; passionné d'événementiel</p>
+    <p class="hero-desc fade-up delay-3">
+      Collégien aurécois passionné par l'image, la lumière et la technique. 
+      Je conçois des expériences visuelles qui marquent — du mapping vidéo architectural 
+      au théâtre, en passant par la scénographie d'événements.
+    </p>
+    <div class="hero-ctas fade-up delay-4">
+      <a href="#projects" class="btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn-secondary">Me contacter</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="light-orb" style="width:300px;height:300px;background:rgba(201,168,76,0.12);top:10%;left:10%;animation-delay:0s;"></div>
+    <div class="light-orb" style="width:200px;height:200px;background:rgba(212,105,30,0.08);bottom:15%;right:15%;animation-delay:1.5s;"></div>
+    <div class="hero-photo-wrap">
+      <div class="hero-badge2">Aurec-sur-Loire <span>· Haute-Loire</span></div>
+      <img src="https://i.postimg.cc/gkqQxqdD/fayfaye.jpg" alt="Ethan Morgado">
+      <div class="hero-badge">
+        <span class="big">300m²</span>
+        <span class="small">façade projetée</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-label">À propos</p>
+    <h2 class="section-title">Un jeune créateur<br>autodidacte</h2>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Années d'implication à la kermesse Notre-Dame-de-la-Faye</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Spectacles de théâtre (2025 & 2026)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">Spectateurs pour le mapping vidéo du 8 décembre 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8min</div>
+        <div class="stat-label">Séquences de projection en boucle pendant 2h30</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p>
+      Élève de 3ème au collège Notre-Dame-de-la-Faye à Aurec-sur-Loire, 
+      <strong>Ethan Morgado</strong> cultive depuis plusieurs années une passion authentique 
+      pour l'audiovisuel, l'événementiel et tout ce qui touche à la création technique et artistique.
+    </p>
+    <p>
+      Autodidacte dans l'âme, il a appris seuls — avec son père Nicolas — les logiciels de mapping vidéo, 
+      la conception graphique, la recherche historique, le montage et toute la logistique d'un spectacle professionnel.
+      <strong>Un parcours impressionnant pour son âge.</strong>
+    </p>
+    <p>
+      En dehors de ses grands projets, il s'implique activement dans la vie de son école : 
+      conception des médailles du cross 2025, participation aux spectacles de théâtre, 
+      organisation de la kermesse depuis 3 ans... Un jeune homme qui fait, concrètement.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Compétences</p>
+  <h2 class="section-title">Ce que je maîtrise</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🎬</div>
+      <h3>Mapping vidéo</h3>
+      <div class="skill-tags">
+        <span class="tag">Projection architecturale</span>
+        <span class="tag">Synchronisation son & lumière</span>
+        <span class="tag">Calibration de projecteur</span>
+        <span class="tag">Scénographie</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <h3>Conception graphique & motion</h3>
+      <div class="skill-tags">
+        <span class="tag">Création de séquences animées</span>
+        <span class="tag">Design narratif</span>
+        <span class="tag">Montage vidéo</span>
+        <span class="tag">Composition visuelle</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎭</div>
+      <h3>Événementiel & théâtre</h3>
+      <div class="skill-tags">
+        <span class="tag">Gestion de projet</span>
+        <span class="tag">Logistique d'événements</span>
+        <span class="tag">Travail en équipe</span>
+        <span class="tag">Communication publique</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <h3>Informatique & algorithmique</h3>
+      <div class="skill-tags">
+        <span class="tag">Club Algo</span>
+        <span class="tag">Programmation de base</span>
+        <span class="tag">Impression 3D / Fab</span>
+        <span class="tag">Créativité technique</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <h3>Recherche & narration</h3>
+      <div class="skill-tags">
+        <span class="tag">Recherche historique</span>
+        <span class="tag">Construction narrative</span>
+        <span class="tag">Storytelling visuel</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <h3>Technique & installation</h3>
+      <div class="skill-tags">
+        <span class="tag">Installation matérielle</span>
+        <span class="tag">Gestion autorisations</span>
+        <span class="tag">Coordination équipe</span>
+        <span class="tag">Débrouillardise</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <p class="section-label">Projets</p>
+      <h2 class="section-title">Ce que j'ai créé</h2>
+    </div>
+    <p class="projects-intro">Des projets concrets, réalisés avec passion et rigueur — parfois à des échelles qu'on n'attend pas d'un collégien.</p>
+  </div>
+
+  <div class="project-main">
+    <!-- PROJET STAR -->
+    <div class="project-card">
+      <div class="project-visual mapping" style="height:320px;">
+        <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+          <!-- bâtiment simplifié -->
+          <rect x="80" y="100" width="440" height="200" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          <!-- fenêtres mapping -->
+          <rect x="100" y="120" width="60" height="50" rx="3" fill="rgba(201,168,76,0.08)">
+            <animate attributeName="fill" values="rgba(201,168,76,0.08);rgba(201,168,76,0.35);rgba(212,105,30,0.3);rgba(201,168,76,0.08)" dur="4s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="175" y="120" width="60" height="50" rx="3" fill="rgba(212,105,30,0.2)">
+            <animate attributeName="fill" values="rgba(212,105,30,0.2);rgba(201,168,76,0.1);rgba(212,105,30,0.4);rgba(212,105,30,0.2)" dur="3.5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="250" y="120" width="60" height="50" rx="3" fill="rgba(100,150,255,0.15)">
+            <animate attributeName="fill" values="rgba(100,150,255,0.15);rgba(201,168,76,0.3);rgba(100,150,255,0.15)" dur="5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="325" y="120" width="60" height="50" rx="3" fill="rgba(201,168,76,0.08)">
+            <animate attributeName="fill" values="rgba(201,168,76,0.08);rgba(255,200,100,0.4);rgba(201,168,76,0.08)" dur="4.5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="400" y="120" width="60" height="50" rx="3" fill="rgba(212,105,30,0.18)">
+            <animate attributeName="fill" values="rgba(212,105,30,0.18);rgba(201,168,76,0.35);rgba(212,105,30,0.18)" dur="3.8s" repeatCount="indefinite"/>
+          </rect>
+          <!-- façade entière lumière projetée -->
+          <rect x="80" y="100" width="440" height="200" rx="2" fill="none">
+            <animate attributeName="stroke" values="rgba(201,168,76,0.2);rgba(201,168,76,0.6);rgba(212,105,30,0.5);rgba(201,168,76,0.2)" dur="6s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-width" values="1;2;1" dur="6s" repeatCount="indefinite"/>
+          </rect>
+          <!-- rayon de lumière projecteur -->
+          <polygon points="300,320 240,100 360,100" fill="rgba(201,168,76,0.06)">
+            <animate attributeName="fill" values="rgba(201,168,76,0.06);rgba(201,168,76,0.12);rgba(201,168,76,0.06)" dur="3s" repeatCount="indefinite"/>
+          </polygon>
+          <!-- étoiles -->
+          <circle cx="150" cy="50" r="1.5" fill="rgba(255,255,255,0.6)"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="280" cy="30" r="1" fill="rgba(255,255,255,0.5)"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="450" cy="60" r="2" fill="rgba(201,168,76,0.8)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="90" cy="40" r="1.5" fill="rgba(255,255,255,0.4)"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
+          <!-- texte -->
+          <text x="300" y="230" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(201,168,76,0.5)" letter-spacing="3">8 DÉCEMBRE 2025</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <p class="project-year">Événementiel · Décembre 2025</p>
+        <h3>Mapping vidéo — Façade Notre-Dame-de-la-Faye</h3>
+        <p>Spectacle de sons et lumières projeté sur 300m² de façade d'école, retraçant l'histoire du 8 décembre lyonnais. Plusieurs centaines de spectateurs, séquences de 8 minutes en boucle pendant 2h30. Conçu et réalisé entièrement avec son père.</p>
+        <div class="project-chips">
+          <span class="chip">Mapping vidéo</span>
+          <span class="chip">300m² façade</span>
+          <span class="chip">Son & lumière</span>
+          <span class="chip">Aurec-sur-Loire</span>
+          <span class="chip">Couverture presse</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+      <!-- théâtre -->
+      <div class="project-card" style="flex:1;">
+        <div class="project-visual theatre" style="height:160px;">
+          <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+            <ellipse cx="150" cy="130" rx="120" ry="20" fill="rgba(212,105,30,0.15)"/>
+            <line x1="150" y1="20" x2="150" y2="110" stroke="rgba(212,105,30,0.4)" stroke-width="2" stroke-dasharray="4,3">
+              <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <circle cx="150" cy="112" r="14" fill="rgba(212,105,30,0.2)" stroke="rgba(212,105,30,0.5)" stroke-width="1">
+              <animate attributeName="r" values="14;16;14" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <!-- spotlights -->
+            <polygon points="60,20 90,100 110,100 100,20" fill="rgba(255,220,150,0.08)"/>
+            <polygon points="240,20 210,100 190,100 200,20" fill="rgba(255,220,150,0.08)"/>
+            <text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(212,105,30,0.5)" letter-spacing="2">SPECTACLE DE THÉÂTRE</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-year">Théâtre · 2025 & 2026</p>
+          <h3>Spectacles de théâtre</h3>
+          <p style="font-size:0.82rem;">Participation active aux spectacles de théâtre du collège Notre-Dame-de-la-Faye sur deux années consécutives.</p>
+          <div class="project-chips">
+            <span class="chip">Scène</span><span class="chip">Jeu d'acteur</span><span class="chip">Technique</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects-small">
+    <!-- médailles -->
+    <div class="project-card project-small-card">
+      <div class="project-visual medals">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+          <circle cx="150" cy="90" r="55" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="2"/>
+          <circle cx="150" cy="90" r="42" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5">
+            <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <text x="150" y="84" text-anchor="middle" font-family="sans-serif" font-size="24" fill="rgba(201,168,76,0.7)">🥇</text>
+          <text x="150" y="104" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(100,200,100,0.6)" letter-spacing="1.5">CROSS 2025</text>
+          <!-- circuit board pattern -->
+          <line x1="50" y1="90" x2="95" y2="90" stroke="rgba(100,200,100,0.2)" stroke-width="1"/>
+          <line x1="205" y1="90" x2="250" y2="90" stroke="rgba(100,200,100,0.2)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="project-body">
+        <p class="project-year">Club Algo · 2025</p>
+        <h3>Médailles du cross</h3>
+        <p style="font-size:0.82rem;">Avec le Club Algo et M. Grange, conception et fabrication des médailles pour le cross solidaire du collège, mêlant créativité, algorithmique et technologie.</p>
+        <div class="project-chips">
+          <span class="chip">Algorithmique</span><span class="chip">Fabrication</span><span class="chip">Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- kermesse -->
+    <div class="project-card project-small-card">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a2535 0%, #2a3a55 100%);">
+        <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+          <!-- étoiles festives -->
+          <circle cx="80" cy="60" r="3" fill="rgba(201,168,76,0.8)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.5s" repeatCount="indefinite"/></circle>
+          <circle cx="150" cy="40" r="2" fill="rgba(255,150,100,0.8)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="220" cy="70" r="3" fill="rgba(100,200,255,0.7)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="120" cy="80" r="2" fill="rgba(255,200,100,0.8)"><animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="200" cy="50" r="1.5" fill="rgba(201,168,76,0.6)"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.2s" repeatCount="indefinite"/></circle>
+          <!-- guirlandes -->
+          <path d="M30,110 Q75,90 120,110 Q165,130 210,110 Q240,95 270,110" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+          <circle cx="75" cy="95" r="5" fill="rgba(201,168,76,0.5)"/>
+          <circle cx="165" cy="125" r="5" fill="rgba(212,105,30,0.6)"/>
+          <circle cx="240" cy="100" r="5" fill="rgba(100,200,255,0.5)"/>
+          <text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(201,168,76,0.5)" letter-spacing="2">KERMESSE 2023 · 2024 · 2025</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <p class="project-year">Événementiel · 3 ans</p>
+        <h3>Kermesse Notre-Dame-de-la-Faye</h3>
+        <p style="font-size:0.82rem;">Implication active dans l'organisation de la kermesse du collège depuis 3 ans — un engagement concret dans la vie de l'établissement.</p>
+        <div class="project-chips">
+          <span class="chip">Événementiel</span><span class="chip">Organisation</span><span class="chip">Engagement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Parcours</p>
+  <h2 class="section-title">Mon histoire</h2>
+  <div class="exp-grid">
+    <div>
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;color:var(--ink-muted);margin-bottom:2rem;letter-spacing:0.05em;text-transform:uppercase;font-size:0.85rem;">Projets & Réalisations</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">Décembre 2025</p>
+          <h3 class="timeline-title">Mapping vidéo — 8 décembre</h3>
+          <p class="timeline-sub">Aurec-sur-Loire · Façade Notre-Dame-de-la-Faye</p>
+          <p class="timeline-desc">Spectacle de sons et lumières sur 300m² de façade d'école. Plusieurs centaines de spectateurs. Couverture par La Commère 43 et Le Progrès. Réalisé avec son père Nicolas.</p>
+          <div class="timeline-tags">
+            <span class="tag">Mapping vidéo</span><span class="tag">300m²</span><span class="tag">Couverture presse</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">2025 & 2026</p>
+          <h3 class="timeline-title">Spectacles de théâtre</h3>
+          <p class="timeline-sub">Collège Notre-Dame-de-la-Faye</p>
+          <p class="timeline-desc">Participation active aux spectacles de théâtre du collège sur deux années consécutives, développant des compétences de scène et de travail collectif.</p>
+          <div class="timeline-tags">
+            <span class="tag">Théâtre</span><span class="tag">Scène</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">2025</p>
+          <h3 class="timeline-title">Médailles du cross solidaire</h3>
+          <p class="timeline-sub">Club Algo · Collège Notre-Dame-de-la-Faye</p>
+          <p class="timeline-desc">Conception et fabrication des médailles pour le cross 2025, en collaboration avec le Club Algo et M. Grange. Mêle créativité, algorithmique et technologie.</p>
+          <div class="timeline-tags">
+            <span class="tag">Algorithmique</span><span class="tag">Fab numérique</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">2023 · 2024 · 2025</p>
+          <h3 class="timeline-title">Kermesse de l'école</h3>
+          <p class="timeline-sub">Notre-Dame-de-la-Faye</p>
+          <p class="timeline-desc">3 ans d'implication dans l'organisation de la kermesse de l'établissement — une fidélité concrète et un sens aigu de l'engagement communautaire.</p>
+          <div class="timeline-tags">
+            <span class="tag">Événementiel</span><span class="tag">3 ans</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-family:'Syne',sans-serif;font-weight:600;color:var(--ink-muted);margin-bottom:2rem;letter-spacing:0.05em;text-transform:uppercase;font-size:0.85rem;">Formation</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">2024 – 2025</p>
+          <h3 class="timeline-title">Troisième</h3>
+          <p class="timeline-sub">Collège Notre-Dame-de-la-Faye · Aurec-sur-Loire</p>
+          <p class="timeline-desc">Fin d'un parcours complet de la maternelle à la 3ème au sein du même établissement. Le mapping vidéo du 8 décembre était son cadeau d'adieu à son école.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="timeline-date">Depuis toujours</p>
+          <h3 class="timeline-title">Formation autodidacte</h3>
+          <p class="timeline-sub">Logiciels de mapping · Conception graphique · Audiovisuel</p>
+          <p class="timeline-desc">Apprentissage des logiciels de mapping vidéo, de la conception graphique et du montage en autonomie, avec le soutien de son père Nicolas, passionné d'audiovisuel.</p>
+          <div class="timeline-tags">
+            <span class="tag">Autodidacte</span><span class="tag">Mapping vidéo</span><span class="tag">Motion design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">On collabore ?</h2>
+  <p class="contact-sub">Ethan est toujours partant pour de nouveaux projets audiovisuels, événementiels ou créatifs.</p>
+  <div class="contact-links">
+    <a href="mailto:ethan.morgado@example.com" class="contact-link main">✉ Envoyer un mail</a>
+    <a href="https://www.leprogres.fr/culture-loisirs/2025/12/11/collegien-il-organise-un-spectacle-de-lumieres-digne-de-l-evenement-lyonnais" target="_blank" class="contact-link">📰 Article Le Progrès</a>
+    <a href="https://www.lacommere43.fr" target="_blank" class="contact-link">📰 La Commère 43</a>
+  </div>
+</section>
+
+<footer>
+  <p>Ethan Morgado · Aurec-sur-Loire · <span>Créateur audiovisuel & événementiel</span></p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">Portfolio créé avec passion — 2025</p>
+</footer>
+
+<script>
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.skill-card, .project-card, .timeline-item, .stat-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Stagger skill cards
+  document.querySelectorAll('.skill-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.07}s`;
+  });
+  document.querySelectorAll('.stat-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+</body>
+</html>
